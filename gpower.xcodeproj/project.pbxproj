@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77A8BB6647A0F31B4B7E33A5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0EB7FB93C4B8EFE3D74577 /* libPods.a */; };
+		FB09A92C1B2FFDC300AE1DCA /* sprites.1.png in Resources */ = {isa = PBXBuildFile; fileRef = FB09A92A1B2FFDC300AE1DCA /* sprites.1.png */; };
+		FB09A92D1B2FFDC300AE1DCA /* sprites.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB09A92B1B2FFDC300AE1DCA /* sprites.plist */; };
+		FB09A9301B3009FF00AE1DCA /* GPProgressNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FB09A92F1B3009FF00AE1DCA /* GPProgressNode.m */; };
+		FB09A9331B30184100AE1DCA /* GPSKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FB09A9321B30184100AE1DCA /* GPSKButton.m */; };
 		FB1C94BC1B2FD840003DD606 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C94BB1B2FD840003DD606 /* main.m */; };
 		FB1C94BF1B2FD840003DD606 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C94BE1B2FD840003DD606 /* AppDelegate.m */; };
 		FB1C94C21B2FD840003DD606 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C94C11B2FD840003DD606 /* GameScene.m */; };
@@ -16,6 +21,7 @@
 		FB1C94CC1B2FD840003DD606 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB1C94CB1B2FD840003DD606 /* Images.xcassets */; };
 		FB1C94CF1B2FD840003DD606 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1C94CD1B2FD840003DD606 /* LaunchScreen.xib */; };
 		FB1C94DB1B2FD840003DD606 /* gpowerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C94DA1B2FD840003DD606 /* gpowerTests.m */; };
+		FB1C94E71B2FE55A003DD606 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1C94E41B2FE53A003DD606 /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CF0EB7FB93C4B8EFE3D74577 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D28F2F337B32F32C1269EF71 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FB09A9281B2FFC3800AE1DCA /* sprites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprites.h; sourceTree = "<group>"; };
+		FB09A92A1B2FFDC300AE1DCA /* sprites.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprites.1.png; sourceTree = "<group>"; };
+		FB09A92B1B2FFDC300AE1DCA /* sprites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprites.plist; sourceTree = "<group>"; };
+		FB09A92E1B3009FF00AE1DCA /* GPProgressNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPProgressNode.h; sourceTree = "<group>"; };
+		FB09A92F1B3009FF00AE1DCA /* GPProgressNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPProgressNode.m; sourceTree = "<group>"; };
+		FB09A9311B30184100AE1DCA /* GPSKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSKButton.h; sourceTree = "<group>"; };
+		FB09A9321B30184100AE1DCA /* GPSKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSKButton.m; sourceTree = "<group>"; };
 		FB1C94B61B2FD840003DD606 /* gpower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gpower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1C94BA1B2FD840003DD606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB1C94BB1B2FD840003DD606 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,6 +61,7 @@
 		FB1C94D41B2FD840003DD606 /* gpowerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gpowerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1C94D91B2FD840003DD606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB1C94DA1B2FD840003DD606 /* gpowerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gpowerTests.m; sourceTree = "<group>"; };
+		FB1C94E41B2FE53A003DD606 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB1C94E71B2FE55A003DD606 /* SpriteKit.framework in Frameworks */,
+				77A8BB6647A0F31B4B7E33A5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +84,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8C800E9EA2CD1961DDDD470 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D28F2F337B32F32C1269EF71 /* Pods.debug.xcconfig */,
+				69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB09A9261B2FEBAC00AE1DCA /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				FB09A9281B2FFC3800AE1DCA /* sprites.h */,
+				FB09A9291B2FFDC300AE1DCA /* sprites.atlasc */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		FB09A9291B2FFDC300AE1DCA /* sprites.atlasc */ = {
+			isa = PBXGroup;
+			children = (
+				FB09A92A1B2FFDC300AE1DCA /* sprites.1.png */,
+				FB09A92B1B2FFDC300AE1DCA /* sprites.plist */,
+			);
+			path = sprites.atlasc;
+			sourceTree = "<group>";
+		};
 		FB1C94AD1B2FD840003DD606 = {
 			isa = PBXGroup;
 			children = (
 				FB1C94B81B2FD840003DD606 /* gpower */,
+				FB1C94E61B2FE546003DD606 /* Frameworks */,
 				FB1C94D71B2FD840003DD606 /* gpowerTests */,
 				FB1C94B71B2FD840003DD606 /* Products */,
+				A8C800E9EA2CD1961DDDD470 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +134,7 @@
 		FB1C94B81B2FD840003DD606 /* gpower */ = {
 			isa = PBXGroup;
 			children = (
+				FB09A9261B2FEBAC00AE1DCA /* Sprites */,
 				FB1C94BD1B2FD840003DD606 /* AppDelegate.h */,
 				FB1C94BE1B2FD840003DD606 /* AppDelegate.m */,
 				FB1C94C01B2FD840003DD606 /* GameScene.h */,
@@ -97,6 +146,10 @@
 				FB1C94CB1B2FD840003DD606 /* Images.xcassets */,
 				FB1C94CD1B2FD840003DD606 /* LaunchScreen.xib */,
 				FB1C94B91B2FD840003DD606 /* Supporting Files */,
+				FB09A92E1B3009FF00AE1DCA /* GPProgressNode.h */,
+				FB09A92F1B3009FF00AE1DCA /* GPProgressNode.m */,
+				FB09A9311B30184100AE1DCA /* GPSKButton.h */,
+				FB09A9321B30184100AE1DCA /* GPSKButton.m */,
 			);
 			path = gpower;
 			sourceTree = "<group>";
@@ -127,6 +180,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FB1C94E61B2FE546003DD606 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB1C94E41B2FE53A003DD606 /* SpriteKit.framework */,
+				CF0EB7FB93C4B8EFE3D74577 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB1C94DE1B2FD840003DD606 /* Build configuration list for PBXNativeTarget "gpower" */;
 			buildPhases = (
+				B07AD60784CDA2FCB30B2EC5 /* Check Pods Manifest.lock */,
 				FB1C94B21B2FD840003DD606 /* Sources */,
 				FB1C94B31B2FD840003DD606 /* Frameworks */,
 				FB1C94B41B2FD840003DD606 /* Resources */,
+				1D2A7304825D2FCCF3FC24BF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB1C94CF1B2FD840003DD606 /* LaunchScreen.xib in Resources */,
+				FB09A92D1B2FFDC300AE1DCA /* sprites.plist in Resources */,
+				FB09A92C1B2FFDC300AE1DCA /* sprites.1.png in Resources */,
 				FB1C94CC1B2FD840003DD606 /* Images.xcassets in Resources */,
 				FB1C94C41B2FD840003DD606 /* GameScene.sks in Resources */,
 				FB1C94CA1B2FD840003DD606 /* Main.storyboard in Resources */,
@@ -223,12 +289,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D2A7304825D2FCCF3FC24BF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B07AD60784CDA2FCB30B2EC5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FB1C94B21B2FD840003DD606 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB09A9301B3009FF00AE1DCA /* GPProgressNode.m in Sources */,
 				FB1C94C71B2FD840003DD606 /* GameViewController.m in Sources */,
+				FB09A9331B30184100AE1DCA /* GPSKButton.m in Sources */,
 				FB1C94BF1B2FD840003DD606 /* AppDelegate.m in Sources */,
 				FB1C94C21B2FD840003DD606 /* GameScene.m in Sources */,
 				FB1C94BC1B2FD840003DD606 /* main.m in Sources */,
@@ -355,6 +456,7 @@
 		};
 		FB1C94DF1B2FD840003DD606 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D28F2F337B32F32C1269EF71 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = gpower/Info.plist;
@@ -365,6 +467,7 @@
 		};
 		FB1C94E01B2FD840003DD606 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = gpower/Info.plist;
@@ -426,6 +529,7 @@
 				FB1C94E01B2FD840003DD606 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB1C94E11B2FD840003DD606 /* Build configuration list for PBXNativeTarget "gpowerTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +538,7 @@
 				FB1C94E31B2FD840003DD606 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

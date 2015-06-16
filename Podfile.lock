@@ -1,0 +1,10 @@
+PODS:
+  - SpriteKit-Components (1.0.2)
+
+DEPENDENCIES:
+  - SpriteKit-Components (~> 1.0)
+
+SPEC CHECKSUMS:
+  SpriteKit-Components: f8961c7e397fc3b312c9bf4b5bec1d7aa9281b9a
+
+COCOAPODS: 0.37.2
