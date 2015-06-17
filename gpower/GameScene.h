@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class GPChicken;
 @interface GameScene : SKScene
-
+@property (nonatomic) GPChicken *gpChicken;
 @end

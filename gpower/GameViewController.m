@@ -5,7 +5,9 @@
 //  Created by yyjim on 6/16/15.
 //  Copyright (c) 2015 cardinalblue. All rights reserved.
 //
+#import <SpriteKit/SpriteKit.h>
 
+#import "GPChicken.h"
 #import "GameViewController.h"
 #import "GameScene.h"
 
@@ -35,6 +37,7 @@
     [super viewDidLoad];
 
     // Configure the view.
+    self.view = [[SKView alloc] init];
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
@@ -43,6 +46,9 @@
     
     // Create and configure the scene.
     GameScene *scene = [GameScene sceneWithSize:[UIScreen mainScreen].bounds.size];
+    scene.gpChicken  = [GPChicken createNew];
+    self.scene = scene;
+    
 //    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     

@@ -8,6 +8,9 @@
 
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+
+#import "GameViewController.h"
+#import "GPChicken.h"
 #import "GPPedometerManager.h"
 #import "AppDelegate.h"
 
@@ -20,12 +23,29 @@ BOOL LogDebugEnabled = YES;
 
 @implementation AppDelegate
 
+- (GameScene *)gameScene
+{
+    GameViewController *gameViewController = SAFE_CAST([GameViewController class], self.window.rootViewController);
+    return gameViewController.scene;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Fabric with:@[CrashlyticsKit]];
+
+    GameViewController *gameViewController = [[GameViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = gameViewController;
+    self.window.backgroundColor = [UIColor blackColor];
+    [self.window makeKeyAndVisible];
+
     self.pedometerManager = [GPPedometerManager shared];
-    [self.pedometerManager startDetectionWithUpdateBlock:^(GPPedometerManager *manager, NSError *error) {
-    }];
+    [self.pedometerManager startDetectionWithUpdateBlock:nil];
+
+    NSDictionary *record = [[NSUserDefaults standardUserDefaults] objectForKey:@"gpower_chicken_record"];
+    if (record) {
+        [self gameScene].gpChicken = [GPChicken chickenFromRecord:record];
+    }
     return YES;
 }
 
@@ -38,11 +58,14 @@ BOOL LogDebugEnabled = YES;
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self saveState];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[self gameScene].gpChicken updateWithSteps:self.pedometerManager.steps];
+    self.pedometerManager.steps = 0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -53,10 +76,17 @@ BOOL LogDebugEnabled = YES;
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [self.pedometerManager stopDetection];
-    
+}
+
+- (void)saveState
+{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(self.pedometerManager.steps) forKey:@"gpower_steps_count"];
+//    [defaults setObject:@(self.pedometerManager.steps) forKey:@"gpower_steps_count"];
+    
+    NSDictionary *record = [[self gameScene].gpChicken record];
+    [defaults setObject:record forKey:@"gpower_chicken_record"];
     [defaults synchronize];
+    NSLog(@"record %@", record);
 }
 
 // ============================================================================

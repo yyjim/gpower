@@ -25,7 +25,10 @@
 		FB5E53961B303B97007444EB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5E53951B303B97007444EB /* CoreMotion.framework */; };
 		FB6D28E41B305A9900760FFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6D28E31B305A9900760FFF /* UIKit.framework */; };
 		FBA82F821B3131510053CAC0 /* GPPedometerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E53991B3054DA007444EB /* GPPedometerManager.m */; };
+		FBA82F851B3138A90053CAC0 /* GPChicken.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA82F841B3138A90053CAC0 /* GPChicken.m */; };
+		FBA82F881B3188310053CAC0 /* background_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = FBA82F871B3188310053CAC0 /* background_sound.wav */; };
 		FBA82F8A1B318A0F0053CAC0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA82F891B318A0F0053CAC0 /* AVFoundation.framework */; };
+		FBA82F8C1B31B0570053CAC0 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBA82F8B1B31B0570053CAC0 /* PressStart2P.ttf */; };
 		FBA82F901B31E1E80053CAC0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA82F8E1B31E1E80053CAC0 /* Fabric.framework */; };
 		FBA82F911B31E1E80053CAC0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA82F8F1B31E1E80053CAC0 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
@@ -73,7 +76,11 @@
 		FB5E53981B3054DA007444EB /* GPPedometerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPPedometerManager.h; sourceTree = "<group>"; };
 		FB5E53991B3054DA007444EB /* GPPedometerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPPedometerManager.m; sourceTree = "<group>"; };
 		FB6D28E31B305A9900760FFF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FBA82F831B3138A90053CAC0 /* GPChicken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPChicken.h; sourceTree = "<group>"; };
+		FBA82F841B3138A90053CAC0 /* GPChicken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPChicken.m; sourceTree = "<group>"; };
+		FBA82F871B3188310053CAC0 /* background_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background_sound.wav; sourceTree = "<group>"; };
 		FBA82F891B318A0F0053CAC0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FBA82F8B1B31B0570053CAC0 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		FBA82F8E1B31E1E80053CAC0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FBA82F8F1B31E1E80053CAC0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +160,7 @@
 		FB1C94B81B2FD840003DD606 /* gpower */ = {
 			isa = PBXGroup;
 			children = (
+				FBA82F861B31882C0053CAC0 /* Resources */,
 				FB09A9261B2FEBAC00AE1DCA /* Sprites */,
 				FB1C94BD1B2FD840003DD606 /* AppDelegate.h */,
 				FB1C94BE1B2FD840003DD606 /* AppDelegate.m */,
@@ -171,6 +179,8 @@
 				FB09A9321B30184100AE1DCA /* GPSKButton.m */,
 				FB5E53981B3054DA007444EB /* GPPedometerManager.h */,
 				FB5E53991B3054DA007444EB /* GPPedometerManager.m */,
+				FBA82F831B3138A90053CAC0 /* GPChicken.h */,
+				FBA82F841B3138A90053CAC0 /* GPChicken.m */,
 			);
 			path = gpower;
 			sourceTree = "<group>";
@@ -214,6 +224,15 @@
 				CF0EB7FB93C4B8EFE3D74577 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBA82F861B31882C0053CAC0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FBA82F8B1B31B0570053CAC0 /* PressStart2P.ttf */,
+				FBA82F871B3188310053CAC0 /* background_sound.wav */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +324,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB1C94CF1B2FD840003DD606 /* LaunchScreen.xib in Resources */,
+				FBA82F8C1B31B0570053CAC0 /* PressStart2P.ttf in Resources */,
 				FB09A92D1B2FFDC300AE1DCA /* sprites.plist in Resources */,
+				FBA82F881B3188310053CAC0 /* background_sound.wav in Resources */,
 				FB09A92C1B2FFDC300AE1DCA /* sprites.1.png in Resources */,
 				FB1C94CC1B2FD840003DD606 /* Images.xcassets in Resources */,
 				FB1C94C41B2FD840003DD606 /* GameScene.sks in Resources */,
@@ -376,6 +397,7 @@
 			files = (
 				FB09A9301B3009FF00AE1DCA /* GPProgressNode.m in Sources */,
 				FB1C94C71B2FD840003DD606 /* GameViewController.m in Sources */,
+				FBA82F851B3138A90053CAC0 /* GPChicken.m in Sources */,
 				FB09A9331B30184100AE1DCA /* GPSKButton.m in Sources */,
 				FB1C94BF1B2FD840003DD606 /* AppDelegate.m in Sources */,
 				FB1C94C21B2FD840003DD606 /* GameScene.m in Sources */,

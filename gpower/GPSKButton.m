@@ -127,7 +127,7 @@
     if ([self isEnabled]) {
         #pragma clang diagnostic push
         #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [_targetTouchUpInside performSelector:_actionTouchUpInside withObject:self];
+        [_targetTouchDown performSelector:_actionTouchDown withObject:self];
         #pragma clang diagnostic pop
         [self setIsSelected:YES];
     }

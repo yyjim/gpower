@@ -7,7 +7,7 @@
             <key>generator</key>
             <string>TexturePacker 3.8.0 - http://www.codeandweb.com/texturepacker</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1dc67620301cfce952083b15e9338203:ca33df3a112cb81da07af9e1de5a542a:ce22a9b70a8b8090324ea26a3e4b3dfa$</string>
+            <string>$TexturePacker:SmartUpdate:845b3acb835856d9cb423f582801fc6d:824f9ed7bbed157f4ba9fca93e0b45df:ce22a9b70a8b8090324ea26a3e4b3dfa$</string>
         </dict>
         <key>format</key>
         <string>APPL</string>
@@ -17,7 +17,7 @@
                 <key>path</key>
                 <string>sprites.1.png</string>
                 <key>size</key>
-                <string>{428,495}</string>
+                <string>{1526,212}</string>
                 <key>subimages</key>
                 <array>
                     <dict>
@@ -26,13 +26,45 @@
                         <key>isFullyOpaque</key>
                         <false/>
                         <key>name</key>
-                        <string>blink/0002.png</string>
+                        <string>8bits/LV1/SELECT/0002.png</string>
                         <key>spriteOffset</key>
-                        <string>{7,13}</string>
+                        <string>{0,0}</string>
                         <key>spriteSourceSize</key>
-                        <string>{240,300}</string>
+                        <string>{210,263}</string>
                         <key>textureRect</key>
-                        <string>{{1,1},{228,278}}</string>
+                        <string>{{1,1},{263,210}}</string>
+                        <key>textureRotated</key>
+                        <true/>
+                    </dict>
+                    <dict>
+                        <key>aliases</key>
+                        <array/>
+                        <key>isFullyOpaque</key>
+                        <false/>
+                        <key>name</key>
+                        <string>8bits/LV1/HIGHLIGHT/0002.png</string>
+                        <key>spriteOffset</key>
+                        <string>{0,0}</string>
+                        <key>spriteSourceSize</key>
+                        <string>{210,256}</string>
+                        <key>textureRect</key>
+                        <string>{{266,1},{256,210}}</string>
+                        <key>textureRotated</key>
+                        <true/>
+                    </dict>
+                    <dict>
+                        <key>aliases</key>
+                        <array/>
+                        <key>isFullyOpaque</key>
+                        <false/>
+                        <key>name</key>
+                        <string>8bits/LV1/HIGHLIGHT/0001.png</string>
+                        <key>spriteOffset</key>
+                        <string>{0,0}</string>
+                        <key>spriteSourceSize</key>
+                        <string>{210,210}</string>
+                        <key>textureRect</key>
+                        <string>{{524,1},{210,210}}</string>
                         <key>textureRotated</key>
                         <false/>
                     </dict>
@@ -42,13 +74,13 @@
                         <key>isFullyOpaque</key>
                         <false/>
                         <key>name</key>
-                        <string>blink/0001.png</string>
+                        <string>8bits/LV1/SELECT/0001.png</string>
                         <key>spriteOffset</key>
-                        <string>{7,23}</string>
+                        <string>{15,0}</string>
                         <key>spriteSourceSize</key>
-                        <string>{240,300}</string>
+                        <string>{210,195}</string>
                         <key>textureRect</key>
-                        <string>{{1,281},{225,213}}</string>
+                        <string>{{736,1},{195,195}}</string>
                         <key>textureRotated</key>
                         <false/>
                     </dict>
@@ -58,13 +90,13 @@
                         <key>isFullyOpaque</key>
                         <false/>
                         <key>name</key>
-                        <string>normal/0001.png</string>
+                        <string>8bits/LV0/NORMAL/0002.png</string>
                         <key>spriteOffset</key>
-                        <string>{21,15}</string>
+                        <string>{0,0}</string>
                         <key>spriteSourceSize</key>
-                        <string>{240,300}</string>
+                        <string>{151,189}</string>
                         <key>textureRect</key>
-                        <string>{{228,281},{196,213}}</string>
+                        <string>{{933,1},{151,189}}</string>
                         <key>textureRotated</key>
                         <false/>
                     </dict>
@@ -74,13 +106,45 @@
                         <key>isFullyOpaque</key>
                         <false/>
                         <key>name</key>
-                        <string>normal/0002.png</string>
+                        <string>8bits/LV1/NORMAL/0001.png</string>
                         <key>spriteOffset</key>
-                        <string>{21,23}</string>
+                        <string>{0,0}</string>
                         <key>spriteSourceSize</key>
-                        <string>{240,300}</string>
+                        <string>{165,180}</string>
                         <key>textureRect</key>
-                        <string>{{231,1},{196,213}}</string>
+                        <string>{{1086,1},{165,180}}</string>
+                        <key>textureRotated</key>
+                        <false/>
+                    </dict>
+                    <dict>
+                        <key>aliases</key>
+                        <array/>
+                        <key>isFullyOpaque</key>
+                        <false/>
+                        <key>name</key>
+                        <string>8bits/LV1/NORMAL/0002.png</string>
+                        <key>spriteOffset</key>
+                        <string>{11,0}</string>
+                        <key>spriteSourceSize</key>
+                        <string>{161,180}</string>
+                        <key>textureRect</key>
+                        <string>{{1253,1},{150,180}}</string>
+                        <key>textureRotated</key>
+                        <false/>
+                    </dict>
+                    <dict>
+                        <key>aliases</key>
+                        <array/>
+                        <key>isFullyOpaque</key>
+                        <false/>
+                        <key>name</key>
+                        <string>8bits/LV0/NORMAL/0001.png</string>
+                        <key>spriteOffset</key>
+                        <string>{0,0}</string>
+                        <key>spriteSourceSize</key>
+                        <string>{120,150}</string>
+                        <key>textureRect</key>
+                        <string>{{1405,1},{120,150}}</string>
                         <key>textureRotated</key>
                         <false/>
                     </dict>
