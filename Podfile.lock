@@ -1,10 +1,31 @@
 PODS:
+  - CBToolkit/Core (0.2.25):
+    - Reachability
+    - UIDevice-Hardware@cb (~> 0.1.0)
+  - Reachability (3.2)
+  - SOMotionDetector (1.0.1)
   - SpriteKit-Components (1.0.2)
+  - UIDevice-Hardware@cb (0.1.9)
 
 DEPENDENCIES:
+  - CBToolkit/Core (~> 0.2.0)
+  - SOMotionDetector (from `git@github.com:SocialObjects-Software/SOMotionDetector.git`)
   - SpriteKit-Components (~> 1.0)
 
+EXTERNAL SOURCES:
+  SOMotionDetector:
+    :git: git@github.com:SocialObjects-Software/SOMotionDetector.git
+
+CHECKOUT OPTIONS:
+  SOMotionDetector:
+    :commit: 02f566299bafa39971b774c411ef6c59ec555214
+    :git: git@github.com:SocialObjects-Software/SOMotionDetector.git
+
 SPEC CHECKSUMS:
+  CBToolkit: cb30620dfd5c89dde8e5bb520abef3cf5170a310
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SOMotionDetector: 9e7975e25ccdaa3f108db510153f92ef433767da
   SpriteKit-Components: f8961c7e397fc3b312c9bf4b5bec1d7aa9281b9a
+  UIDevice-Hardware@cb: 6d26b27cd2f3cbd742f76523d44ecb806c41a09e
 
 COCOAPODS: 0.37.2

@@ -22,6 +22,9 @@
 		FB1C94CF1B2FD840003DD606 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1C94CD1B2FD840003DD606 /* LaunchScreen.xib */; };
 		FB1C94DB1B2FD840003DD606 /* gpowerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C94DA1B2FD840003DD606 /* gpowerTests.m */; };
 		FB1C94E71B2FE55A003DD606 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1C94E41B2FE53A003DD606 /* SpriteKit.framework */; };
+		FB5E53961B303B97007444EB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5E53951B303B97007444EB /* CoreMotion.framework */; };
+		FB6D28E41B305A9900760FFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6D28E31B305A9900760FFF /* UIKit.framework */; };
+		FBA82F821B3131510053CAC0 /* GPPedometerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E53991B3054DA007444EB /* GPPedometerManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,7 @@
 		FB09A92F1B3009FF00AE1DCA /* GPProgressNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPProgressNode.m; sourceTree = "<group>"; };
 		FB09A9311B30184100AE1DCA /* GPSKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSKButton.h; sourceTree = "<group>"; };
 		FB09A9321B30184100AE1DCA /* GPSKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSKButton.m; sourceTree = "<group>"; };
+		FB0EBF231B305B8900B4D191 /* gpower-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gpower-Prefix.pch"; sourceTree = "<group>"; };
 		FB1C94B61B2FD840003DD606 /* gpower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gpower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1C94BA1B2FD840003DD606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB1C94BB1B2FD840003DD606 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,6 +66,10 @@
 		FB1C94D91B2FD840003DD606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB1C94DA1B2FD840003DD606 /* gpowerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gpowerTests.m; sourceTree = "<group>"; };
 		FB1C94E41B2FE53A003DD606 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		FB5E53951B303B97007444EB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		FB5E53981B3054DA007444EB /* GPPedometerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPPedometerManager.h; sourceTree = "<group>"; };
+		FB5E53991B3054DA007444EB /* GPPedometerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPPedometerManager.m; sourceTree = "<group>"; };
+		FB6D28E31B305A9900760FFF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6D28E41B305A9900760FFF /* UIKit.framework in Frameworks */,
+				FB5E53961B303B97007444EB /* CoreMotion.framework in Frameworks */,
 				FB1C94E71B2FE55A003DD606 /* SpriteKit.framework in Frameworks */,
 				77A8BB6647A0F31B4B7E33A5 /* libPods.a in Frameworks */,
 			);
@@ -150,6 +160,8 @@
 				FB09A92F1B3009FF00AE1DCA /* GPProgressNode.m */,
 				FB09A9311B30184100AE1DCA /* GPSKButton.h */,
 				FB09A9321B30184100AE1DCA /* GPSKButton.m */,
+				FB5E53981B3054DA007444EB /* GPPedometerManager.h */,
+				FB5E53991B3054DA007444EB /* GPPedometerManager.m */,
 			);
 			path = gpower;
 			sourceTree = "<group>";
@@ -157,6 +169,7 @@
 		FB1C94B91B2FD840003DD606 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB0EBF231B305B8900B4D191 /* gpower-Prefix.pch */,
 				FB1C94BA1B2FD840003DD606 /* Info.plist */,
 				FB1C94BB1B2FD840003DD606 /* main.m */,
 			);
@@ -183,6 +196,8 @@
 		FB1C94E61B2FE546003DD606 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB6D28E31B305A9900760FFF /* UIKit.framework */,
+				FB5E53951B303B97007444EB /* CoreMotion.framework */,
 				FB1C94E41B2FE53A003DD606 /* SpriteKit.framework */,
 				CF0EB7FB93C4B8EFE3D74577 /* libPods.a */,
 			);
@@ -240,6 +255,11 @@
 				TargetAttributes = {
 					FB1C94B51B2FD840003DD606 = {
 						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					FB1C94D31B2FD840003DD606 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -333,6 +353,7 @@
 				FB1C94BF1B2FD840003DD606 /* AppDelegate.m in Sources */,
 				FB1C94C21B2FD840003DD606 /* GameScene.m in Sources */,
 				FB1C94BC1B2FD840003DD606 /* main.m in Sources */,
+				FBA82F821B3131510053CAC0 /* GPPedometerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +480,7 @@
 			baseConfigurationReference = D28F2F337B32F32C1269EF71 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "gpower/gpower-Prefix.pch";
 				INFOPLIST_FILE = gpower/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -470,6 +492,7 @@
 			baseConfigurationReference = 69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "gpower/gpower-Prefix.pch";
 				INFOPLIST_FILE = gpower/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

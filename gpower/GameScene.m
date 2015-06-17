@@ -6,8 +6,11 @@
 //  Copyright (c) 2015 cardinalblue. All rights reserved.
 //
 
+#import <SOMotionDetector/SOStepDetector.h>
+#import <CoreMotion/CoreMotion.h>
 #import "sprites.h"
 
+#import "GPPedometerManager.h"
 #import "GPSKButton.h"
 #import "GameScene.h"
 
@@ -18,9 +21,14 @@
 @property (nonatomic, strong) SKNode *gpowerBar;
 @property (nonatomic, strong) SKNode *stepsBar;
 @property (nonatomic, strong) GPSKButton *feedButton;
+
+@property (nonatomic, strong) SKLabelNode *stepsLabel;
 @end
 
 @implementation GameScene
+{
+    NSInteger _stepsCount;
+}
 
 - (instancetype)initWithSize:(CGSize)size
 {
@@ -33,6 +41,11 @@
 
 - (void)initScene
 {
+    [[GPPedometerManager shared] addObserver:self
+                                  forKeyPath:NSStringFromSelector(@selector(steps))
+                                     options:NSKeyValueObservingOptionNew
+                                     context:nil];
+    
     self.atlas = [SKTextureAtlas atlasNamed:SPRITES_ATLAS_NAME];
     
     // load background image, and set anchor point to the bottom left corner (default: center of sprite)
@@ -74,6 +87,15 @@
         node;
     });
     
+    self.stepsLabel = ({
+        SKLabelNode *l = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        l.text = @"0";
+        l.fontSize = 20;
+        l.position = CGPointMake(CGRectGetMidX(self.frame), self.feedButton.position.y - 50);
+        [self addChild:l];
+        l;
+    });
+    
     [self updateAnimation];
 }
 
@@ -84,9 +106,9 @@
     [self.chicken runAction:walkAnim];
 }
 
-//-(void)didMoveToView:(SKView *)view
-//{
-//    /* Setup your scene here */
+-(void)didMoveToView:(SKView *)view
+{
+    /* Setup your scene here */
 //    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
 //    
 //    myLabel.text = @"Hello, World!";
@@ -97,7 +119,7 @@
 //    SKTextureAtlas *chickenAnimatedAtlas = [SKTextureAtlas atlasNamed:@"chicken1"];
 //    
 //    [self addChild:myLabel];
-//}
+}
 
 - (void)updateAnimation
 {
@@ -128,6 +150,17 @@
 -(void)update:(CFTimeInterval)currentTime
 {
     /* Called before each frame is rendered */
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(steps))]) {
+        id value = [change valueForKey:NSKeyValueChangeNewKey];
+        self.stepsLabel.text = [value stringValue];
+    }
 }
 
 @end
