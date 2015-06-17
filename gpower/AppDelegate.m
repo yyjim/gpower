@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 cardinalblue. All rights reserved.
 //
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #import "GPPedometerManager.h"
 #import "AppDelegate.h"
 
@@ -20,6 +22,7 @@ BOOL LogDebugEnabled = YES;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Fabric with:@[CrashlyticsKit]];
     self.pedometerManager = [GPPedometerManager shared];
     [self.pedometerManager startDetectionWithUpdateBlock:^(GPPedometerManager *manager, NSError *error) {
     }];
