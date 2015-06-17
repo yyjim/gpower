@@ -1,0 +1,81 @@
+# Customise this file, documentation can be found here:
+# https://github.com/krausefx/fastlane#customise-the-fastfile
+
+# Change the syntax highlighting to Ruby
+
+# All lines starting with a # are ignored when running `fastlane`
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+require 'versionomy'
+
+fastlane_version "0.7.0"
+
+$app_version = ENV['VERSION']
+
+def bump_version info_plist
+  # Bump version
+  current_version = `/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' #{info_plist}`.chomp!
+  next_version = Versionomy.parse(current_version.chomp).bump(:tiny)
+  STDERR.puts "bump version from #{current_version} to #{next_version}"
+  set_version next_version, info_plist
+  next_version
+end
+
+def set_version version, info_plist
+  STDERR.puts "Set version #{version}"
+  `/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString #{version}"  #{info_plist}`
+  `/usr/libexec/PlistBuddy -c "Set :CFBundleVersion #{version}"  #{info_plist}`
+  version
+end
+
+def update_translation
+  `../bin/build-i18n`
+end
+
+def release scheme, configuration, info_plist
+  if $app_version
+    set_version $app_version, info_plist
+  else
+    $app_version = bump_version info_plist
+  end
+  ipa({
+    workspace: "gpower.xcworkspace",
+    configuration: configuration,
+    scheme: scheme,
+    # (optionals)
+    destination: "./build",
+    clean: true,   # This means 'Do Clean'. Cleans project before building (the default if not specified).
+  })
+  crashlytics({
+    crashlytics_path: './Crashlytics.framework',
+    notes_path: './bin/release.yaml',
+    groups: 'Cardinalblue',
+    notifications: 'YES'
+  })
+end
+
+before_all do
+  ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  cocoapods
+end
+
+lane :adhoc do
+  release 'gpower', 'AdHoc', '../gpower/Info.plist '
+end
+
+after_all do |lane|
+  slack(
+    message: "#{lane} successfully released!",
+    success: true,        # Optional, defaults to true.
+    payload: {            # Optional, lets you specify any number of your own Slack attachments.
+      'Version' => $app_version
+    },
+    default_payloads: [:git_branch, :git_author] # Optional, lets you specify a whitelist of default payloads to include. Pass an empty array to suppress all the default payloads. Don't add this key, or pass nil, if you want all the default payloads. The available default payloads are: `lane`, `test_result`, `git_branch`, `git_author`, `last_git_commit`.
+  )
+end
+
+error do |lane, exception|
+  # Something bad happened
+
+end
