@@ -82,6 +82,7 @@ static NSString *textureNameForState[2][2] = {
                                   forKeyPath:NSStringFromSelector(@selector(steps))
                                      options:NSKeyValueObservingOptionNew
                                      context:nil];
+    self.backgroundColor = [SKColor whiteColor];
     
     self.atlas = [SKTextureAtlas atlasNamed:SPRITES_ATLAS_NAME];
     
@@ -120,7 +121,7 @@ static NSString *textureNameForState[2][2] = {
     });
     
     self.feedButton = ({
-        GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_feed_me" selected:nil];
+        GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_feed_me" selected:@"btn_feed_me_s"];
         [node setTouchUpInsideTarget:self action:@selector(handleFeedButtonPressed:)];
         node.position = CGPointMake(CGRectGetMidX(self.frame), self.chicken.position.y - 200);
         [self addChild:node];
@@ -155,9 +156,10 @@ static NSString *textureNameForState[2][2] = {
         SKLabelNode *l = [SKLabelNode labelNodeWithFontNamed:@"PressStart2P"];
         l.text = @"0";
         l.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-        l.fontSize = 20;
+        l.fontSize = 12;
+        l.fontColor = CBRGBA(45, 45, 60, 1);
         l.position = CGPointMake(self.stepsBar.position.x - [self.stepsBar calculateAccumulatedFrame].size.width / 2,
-                                 self.stepsBar.position.y - 60);
+                                 self.stepsBar.position.y - 50);
         [self addChild:l];
         l;
     });
@@ -166,9 +168,10 @@ static NSString *textureNameForState[2][2] = {
         SKLabelNode *l = [SKLabelNode labelNodeWithFontNamed:@"PressStart2P"];
         l.text = @"0";
         l.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-        l.fontSize = 20;
+        l.fontSize = 12;
+        l.fontColor = CBRGBA(45, 45, 60, 1);
         l.position = CGPointMake(self.gpowerBar.position.x - [self.gpowerBar calculateAccumulatedFrame].size.width / 2,
-                                 self.gpowerBar.position.y - 60);
+                                 self.gpowerBar.position.y - 50);
         [self addChild:l];
         l;
     });
