@@ -31,6 +31,8 @@
 		FBA82F8C1B31B0570053CAC0 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBA82F8B1B31B0570053CAC0 /* PressStart2P.ttf */; };
 		FBA82F901B31E1E80053CAC0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA82F8E1B31E1E80053CAC0 /* Fabric.framework */; };
 		FBA82F911B31E1E80053CAC0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA82F8F1B31E1E80053CAC0 /* Crashlytics.framework */; };
+		FBD322911B32A6E6004C78FF /* chicken-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = FBD322901B32A6E6004C78FF /* chicken-3.wav */; };
+		FBE70E2B1B326316007619FD /* GPGameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE70E2A1B326316007619FD /* GPGameConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CAD3DF6E33E98F0B08917A1E /* Pods.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.adhoc.xcconfig; path = "Pods/Target Support Files/Pods/Pods.adhoc.xcconfig"; sourceTree = "<group>"; };
 		CF0EB7FB93C4B8EFE3D74577 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28F2F337B32F32C1269EF71 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FB09A9281B2FFC3800AE1DCA /* sprites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprites.h; sourceTree = "<group>"; };
@@ -83,6 +86,9 @@
 		FBA82F8B1B31B0570053CAC0 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		FBA82F8E1B31E1E80053CAC0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FBA82F8F1B31E1E80053CAC0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		FBD322901B32A6E6004C78FF /* chicken-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "chicken-3.wav"; sourceTree = "<group>"; };
+		FBE70E291B326316007619FD /* GPGameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPGameConfig.h; sourceTree = "<group>"; };
+		FBE70E2A1B326316007619FD /* GPGameConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPGameConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 			children = (
 				D28F2F337B32F32C1269EF71 /* Pods.debug.xcconfig */,
 				69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */,
+				CAD3DF6E33E98F0B08917A1E /* Pods.adhoc.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -181,6 +188,8 @@
 				FB5E53991B3054DA007444EB /* GPPedometerManager.m */,
 				FBA82F831B3138A90053CAC0 /* GPChicken.h */,
 				FBA82F841B3138A90053CAC0 /* GPChicken.m */,
+				FBE70E291B326316007619FD /* GPGameConfig.h */,
+				FBE70E2A1B326316007619FD /* GPGameConfig.m */,
 			);
 			path = gpower;
 			sourceTree = "<group>";
@@ -230,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				FBA82F8B1B31B0570053CAC0 /* PressStart2P.ttf */,
+				FBD322901B32A6E6004C78FF /* chicken-3.wav */,
 				FBA82F871B3188310053CAC0 /* background_sound.wav */,
 			);
 			path = Resources;
@@ -330,6 +340,7 @@
 				FBA82F881B3188310053CAC0 /* background_sound.wav in Resources */,
 				FB09A92C1B2FFDC300AE1DCA /* sprites.1.png in Resources */,
 				FB1C94CC1B2FD840003DD606 /* Images.xcassets in Resources */,
+				FBD322911B32A6E6004C78FF /* chicken-3.wav in Resources */,
 				FB1C94C41B2FD840003DD606 /* GameScene.sks in Resources */,
 				FB1C94CA1B2FD840003DD606 /* Main.storyboard in Resources */,
 			);
@@ -398,6 +409,7 @@
 			files = (
 				FB09A9301B3009FF00AE1DCA /* GPProgressNode.m in Sources */,
 				FB1C94C71B2FD840003DD606 /* GameViewController.m in Sources */,
+				FBE70E2B1B326316007619FD /* GPGameConfig.m in Sources */,
 				FBA82F851B3138A90053CAC0 /* GPChicken.m in Sources */,
 				FB09A9331B30184100AE1DCA /* GPSKButton.m in Sources */,
 				FB1C94BF1B2FD840003DD606 /* AppDelegate.m in Sources */,
@@ -532,13 +544,16 @@
 			baseConfigurationReference = D28F2F337B32F32C1269EF71 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "gpower/gpower-Prefix.pch";
 				INFOPLIST_FILE = gpower/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -549,13 +564,16 @@
 			baseConfigurationReference = 69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "gpower/gpower-Prefix.pch";
 				INFOPLIST_FILE = gpower/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -635,16 +653,24 @@
 		};
 		FBA82F931B31E6BD0053CAC0 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69444C6F32E956CCC7B3363A /* Pods.release.xcconfig */;
+			baseConfigurationReference = CAD3DF6E33E98F0B08917A1E /* Pods.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Cardinal Blue Software, Inc (F6J8B455GU)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "gpower/gpower-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"FB_TWEAK_ENABLED=1",
+				);
 				INFOPLIST_FILE = gpower/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8b01b93d-9754-4b72-ba34-c864f72e8e18";

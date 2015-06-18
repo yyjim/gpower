@@ -41,11 +41,6 @@ BOOL LogDebugEnabled = YES;
 
     self.pedometerManager = [GPPedometerManager shared];
     [self.pedometerManager startDetectionWithUpdateBlock:nil];
-
-    NSDictionary *record = [[NSUserDefaults standardUserDefaults] objectForKey:@"gpower_chicken_record"];
-    if (record) {
-        [self gameScene].gpChicken = [GPChicken chickenFromRecord:record];
-    }
     return YES;
 }
 
@@ -70,6 +65,9 @@ BOOL LogDebugEnabled = YES;
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[self gameScene] resumeGame];
+    });
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -80,13 +78,7 @@ BOOL LogDebugEnabled = YES;
 
 - (void)saveState
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:@(self.pedometerManager.steps) forKey:@"gpower_steps_count"];
-    
-    NSDictionary *record = [[self gameScene].gpChicken record];
-    [defaults setObject:record forKey:@"gpower_chicken_record"];
-    [defaults synchronize];
-    NSLog(@"record %@", record);
+    [[self gameScene] saveGame];
 }
 
 // ============================================================================

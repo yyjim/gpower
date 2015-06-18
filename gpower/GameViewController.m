@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 cardinalblue. All rights reserved.
 //
 #import <SpriteKit/SpriteKit.h>
+#import <Tweaks/FBTweakViewController.h>
 
 #import "GPChicken.h"
 #import "GameViewController.h"
@@ -32,6 +33,11 @@
 
 @implementation GameViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,7 +52,6 @@
     
     // Create and configure the scene.
     GameScene *scene = [GameScene sceneWithSize:[UIScreen mainScreen].bounds.size];
-    scene.gpChicken  = [GPChicken createNew];
     self.scene = scene;
     
 //    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
@@ -54,6 +59,18 @@
     
     // Present the scene.
     [skView presentScene:scene];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleTweakNotification:)
+                                                 name:FBTweakShakeViewControllerDidDismissNotification
+                                               object:nil];
+}
+
+- (void)handleTweakNotification:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:FBTweakShakeViewControllerDidDismissNotification]) {
+        self.scene.gpChicken.config = [GPGameConfig config].chickenConfig;
+    }
 }
 
 - (BOOL)shouldAutorotate
@@ -61,7 +78,7 @@
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;

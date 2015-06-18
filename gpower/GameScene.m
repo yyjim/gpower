@@ -9,6 +9,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <SOMotionDetector/SOStepDetector.h>
 #import <CoreMotion/CoreMotion.h>
+#import <Tweaks/FBTweakViewController.h>
+#import <Tweaks/FBTweakStore.h>
 
 #import "sprites.h"
 
@@ -33,12 +35,16 @@ static NSString *textureNameForState[2][2] = {
 };
 
 @interface GameScene ()
+    <FBTweakViewControllerDelegate>
 @property (nonatomic) SKTextureAtlas *atlas;
 @property (nonatomic, strong) SKAction *sequence;
 @property (nonatomic, strong) SKSpriteNode *chicken;
 @property (nonatomic, strong) GPProgressNode *gpowerBar;
 @property (nonatomic, strong) GPProgressNode *stepsBar;
 @property (nonatomic, strong) GPSKButton *feedButton;
+@property (nonatomic, strong) GPSKButton *musicButton;
+@property (nonatomic, strong) GPSKButton *tweaksButton;
+@property (nonatomic, strong) GPSKButton *energyButton;
 
 @property (nonatomic, strong) SKLabelNode *gpowerLabel;
 @property (nonatomic, strong) SKLabelNode *stepsLabel;
@@ -55,6 +61,16 @@ static NSString *textureNameForState[2][2] = {
 {
     self = [super initWithSize:size];
     if (self) {
+        self.gpChicken = ({
+            GPChicken *g;
+            NSDictionary *record = [[NSUserDefaults standardUserDefaults] objectForKey:@"gpower_chicken_record"];
+            if (record) {
+                g = [GPChicken chickenFromRecord:record];
+            } else {
+                g = [GPChicken createNew];
+            }
+            g;
+        });
         [self initScene];
     }
     return self;
@@ -106,11 +122,35 @@ static NSString *textureNameForState[2][2] = {
     self.feedButton = ({
         GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_feed_me" selected:nil];
         [node setTouchUpInsideTarget:self action:@selector(handleFeedButtonPressed:)];
-        node.position = CGPointMake(CGRectGetMidX(self.frame), self.chicken.position.y - 250);
+        node.position = CGPointMake(CGRectGetMidX(self.frame), self.chicken.position.y - 200);
+        [self addChild:node];
+        node;
+    });
+
+    self.musicButton = ({
+        GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_music" selected:nil];
+        [node setTouchUpInsideTarget:self action:@selector(handleMusicButtonPressed:)];
+        node.position = CGPointMake(self.frame.size.width - 64, 64);
+        [self addChild:node];
+        node;
+    });
+
+    self.tweaksButton = ({
+        GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_settings" selected:nil];
+        [node setTouchUpInsideTarget:self action:@selector(handleTweaksButtonPressed:)];
+        node.position = CGPointMake(64, 64);
         [self addChild:node];
         node;
     });
     
+    self.energyButton = ({
+        GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_energy" selected:nil];
+        [node setTouchUpInsideTarget:self action:@selector(handleEnergyButtonPressed:)];
+        node.position = CGPointMake(CGRectGetMidX(self.frame), 64);
+        [self addChild:node];
+        node;
+    });
+
     self.stepsLabel = ({
         SKLabelNode *l = [SKLabelNode labelNodeWithFontNamed:@"PressStart2P"];
         l.text = @"0";
@@ -138,18 +178,31 @@ static NSString *textureNameForState[2][2] = {
                                    selector:@selector(updateGPChicken)
                                    userInfo:nil
                                     repeats:YES];
-
-#if 0
+    
     _backgroundPlayer = ({
         NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"background_sound" withExtension:@"wav"];
         AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:nil];
         player.numberOfLoops = -1; //-1 = infinite loop
-        [player play];
         player;
     });
-#endif
+    
     [self updateSubviews];
     [self updateAnimation];
+}
+
+- (void)resumeGame
+{
+    self.view.paused = NO;
+    self.chicken.paused = NO;
+}
+
+- (void)saveGame
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *record = [self.gpChicken record];
+    [defaults setObject:record forKey:@"gpower_chicken_record"];
+    [defaults synchronize];
 }
 
 #pragma mark - Setters/Getters
@@ -177,7 +230,7 @@ static NSString *textureNameForState[2][2] = {
     }];
     
     [self updateSubviews];
-//    [self updateAnimation];
+    [self updateAnimation];
 }
 
 #pragma mark - Handlers
@@ -202,17 +255,48 @@ static NSString *textureNameForState[2][2] = {
     if ([self.gpChicken eat]) {
         NSArray *textures = [self animateTexturesForState:1];
         if (textures) {
+            [self.chicken removeAllActions];
+            
             SKAction *baseAnim = [SKAction animateWithTextures:textures
                                                   timePerFrame:0.3];
-            SKAction *walkAnim = [SKAction sequence:@[baseAnim, baseAnim, baseAnim]];
-            if ([self.chicken hasActions]) {
-                [self.chicken removeAllActions];                
-            }
+            SKAction *moveY = [SKAction moveToY:CGRectGetMidY(self.frame) + 50 duration:0.3];
+            SKAction *walkAnim = [SKAction sequence:@[moveY, baseAnim, baseAnim, baseAnim]];
             SKAction *block = [SKAction runBlock:^{
                 [self updateAnimation];
             }];
             [self.chicken runAction:[SKAction sequence:@[walkAnim, block]]];
         }
+    }
+}
+
+- (void)handleTweaksButtonPressed:(id)sender
+{
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    UIViewController *visibleViewController = window.rootViewController;
+    while (visibleViewController.presentedViewController != nil) {
+        visibleViewController = visibleViewController.presentedViewController;
+    }
+
+    // Prevent double-presenting the tweaks view controller.
+    if (![visibleViewController isKindOfClass:[FBTweakViewController class]]) {
+        FBTweakStore *store = [FBTweakStore sharedInstance];
+        FBTweakViewController *viewController = [[FBTweakViewController alloc] initWithStore:store];
+        viewController.tweaksDelegate = self;
+        [visibleViewController presentViewController:viewController animated:YES completion:NULL];
+    }
+}
+
+- (void)handleEnergyButtonPressed:(id)sender
+{
+    [self.gpChicken updateWithSteps:100];
+}
+
+- (void)handleMusicButtonPressed:(id)sender
+{
+    if (_backgroundPlayer.playing) {
+        [_backgroundPlayer pause];
+    } else {
+        [_backgroundPlayer play];
     }
 }
 
@@ -231,21 +315,39 @@ static NSString *textureNameForState[2][2] = {
 //    [self addChild:myLabel];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInNode:self];
+    if (self.gpChicken.level >= 1 && [self.chicken containsPoint:touchLocation]) {
+        SKAction *select = [SKAction animateWithTextures:SPRITES_ANIM_8BITS_LV1_SELECT
+                                            timePerFrame:0.3];
+        [self.chicken removeAllActions];
+        SKAction *moveY = [SKAction moveToY:CGRectGetMidY(self.frame) + 50 duration:0.3];
+        SKAction *block = [SKAction runBlock:^{
+            [self updateAnimation];
+        }];
+        SKAction *sound = [SKAction playSoundFileNamed:@"chicken-3.wav" waitForCompletion:YES];
+        [self.chicken runAction:[SKAction group:@[sound, [SKAction sequence:@[moveY, select, select, block]]]]];
+    }
+}
+
 - (void)updateAnimation
 {
     NSArray *textures = [self animateTexturesForState:0];
     if (!textures) {
         return;
     }
+    [self.chicken removeAllActions];
     SKAction *baseAnim = [SKAction animateWithTextures:textures timePerFrame:0.3];
 
     SKAction *jump = [SKAction moveBy:CGVectorMake(0, 15) duration:0.2];
     SKAction *walkAnim = [SKAction sequence:@[baseAnim, jump, [jump reversedAction], baseAnim]];
     
     // we define two actions to move the sprite from left to right, and back;
-    SKAction *moveRight  = [SKAction moveToX:CGRectGetMaxX(self.frame) - self.chicken.size.width
+    SKAction *moveRight  = [SKAction moveToX:CGRectGetMaxX(self.frame) - 120
                                     duration:walkAnim.duration];
-    SKAction *moveLeft   = [SKAction moveToX:CGRectGetMinX(self.frame) + self.chicken.size.width
+    SKAction *moveLeft   = [SKAction moveToX:CGRectGetMinX(self.frame) + 120
                                     duration:walkAnim.duration];
     
     // as we have only an animation with the CapGuy walking from left to right, we use a 'scale' action
@@ -271,18 +373,16 @@ static NSString *textureNameForState[2][2] = {
 {
     [self.gpChicken updateWithSteps:[GPPedometerManager shared].steps];
     [GPPedometerManager shared].steps = 0;
+    
+    [self saveGame];
 }
 
 - (void)updateSubviews
 {
-    CGFloat progress = self.gpChicken.energy / 100.0;
-    self.gpowerBar.progress = progress;
+    self.gpowerBar.progress = self.gpChicken.energyProgress;
+    self.stepsBar.progress = self.gpChicken.vitaminProgress;
     
-    self.stepsBar.progress = ({
-        self.gpChicken.vitamin / 200.0;
-    });
-    
-    self.gpowerLabel.text = [@((NSInteger)self.gpChicken.energy) stringValue];
+    self.gpowerLabel.text = [@((NSInteger)ceil(self.gpChicken.energy)) stringValue];
     self.stepsLabel.text  = [@((NSInteger)self.gpChicken.vitamin) stringValue];
     
     self.chicken.texture = [SKTexture textureWithImageNamed:textureNameForState[0][MIN(1, self.gpChicken.level)]];
@@ -297,10 +397,16 @@ static NSString *textureNameForState[2][2] = {
         [self updateSubviews];
         return;
     }
-    
-    if ([keyPath isEqualToString:NSStringFromSelector(@selector(steps))]) {
-        id value = [change valueForKey:NSKeyValueChangeNewKey];
-    }
+}
+
+
+#pragma mark - FBTweakViewControllerDelegate
+
+- (void)tweakViewControllerPressedDone:(FBTweakViewController *)tweakViewController
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:FBTweakShakeViewControllerDidDismissNotification
+                                                        object:tweakViewController];
+    [tweakViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

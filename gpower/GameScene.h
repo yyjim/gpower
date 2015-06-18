@@ -11,4 +11,7 @@
 @class GPChicken;
 @interface GameScene : SKScene
 @property (nonatomic) GPChicken *gpChicken;
+
+- (void)resumeGame;
+- (void)saveGame;
 @end
