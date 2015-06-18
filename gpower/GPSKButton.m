@@ -164,9 +164,8 @@
             #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [_targetTouchUpInside performSelector:_actionTouchUpInside withObject:self];
             #pragma clang diagnostic pop
-    } else {
-        [self setIsSelected:NO];
     }
+    [self setIsSelected:NO];
     
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
