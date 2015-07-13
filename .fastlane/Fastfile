@@ -58,6 +58,7 @@ end
 before_all do
   ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   cocoapods
+  cert
   sigh(
       adhoc: true,
       force: true,
