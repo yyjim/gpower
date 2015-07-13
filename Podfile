@@ -7,6 +7,7 @@ pod 'Tweaks'
 pod 'SpriteKit-Components', '~> 1.0'
 pod 'CBToolkit/Core', '~>0.2.0'
 pod 'SOMotionDetector', :git => 'git@github.com:SocialObjects-Software/SOMotionDetector.git'
+pod 'PBJVision', '~> 0.4'
 
 # This enables Tweaks on experimental and test flight builds.
 post_install do |installer_representation|

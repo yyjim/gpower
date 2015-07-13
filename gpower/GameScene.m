@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 cardinalblue. All rights reserved.
 //
 
+#import <PBJVision/PBJVision.h>
 #import <AVFoundation/AVFoundation.h>
 #import <SOMotionDetector/SOStepDetector.h>
 #import <CoreMotion/CoreMotion.h>
@@ -45,6 +46,8 @@ static NSString *textureNameForState[2][2] = {
 @property (nonatomic, strong) GPSKButton *musicButton;
 @property (nonatomic, strong) GPSKButton *tweaksButton;
 @property (nonatomic, strong) GPSKButton *energyButton;
+@property (nonatomic, strong) GPSKButton *cameraButton;
+@property (nonatomic, strong) GPSKButton *cameraFlipButton;
 
 @property (nonatomic, strong) SKLabelNode *gpowerLabel;
 @property (nonatomic, strong) SKLabelNode *stepsLabel;
@@ -56,6 +59,7 @@ static NSString *textureNameForState[2][2] = {
     NSInteger _stepsCount;
     AVAudioPlayer *_backgroundPlayer;
 }
+@synthesize delegate = _delegate;
 
 - (instancetype)initWithSize:(CGSize)size
 {
@@ -82,7 +86,7 @@ static NSString *textureNameForState[2][2] = {
                                   forKeyPath:NSStringFromSelector(@selector(steps))
                                      options:NSKeyValueObservingOptionNew
                                      context:nil];
-    self.backgroundColor = [SKColor whiteColor];
+    self.backgroundColor = [SKColor clearColor];
     
     self.atlas = [SKTextureAtlas atlasNamed:SPRITES_ATLAS_NAME];
     
@@ -151,6 +155,22 @@ static NSString *textureNameForState[2][2] = {
         [self addChild:node];
         node;
     });
+    
+    self.cameraButton = ({
+        GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_camera" selected:nil];
+        [node setTouchUpInsideTarget:self action:@selector(handleCameraButtonPressed:)];
+        node.position = CGPointMake(CGRectGetMidX(self.frame) + 40, 64);
+        [self addChild:node];
+        node;
+    });
+
+    self.cameraFlipButton = ({
+        GPSKButton *node = [[GPSKButton alloc] initWithImageNamedNormal:@"btn_dvd" selected:nil];
+        [node setTouchUpInsideTarget:self action:@selector(handleFlipButtonPressed:)];
+        node.position = CGPointMake(CGRectGetMidX(self.frame) - 40, 64);
+        [self addChild:node];
+        node;
+    });
 
     self.stepsLabel = ({
         SKLabelNode *l = [SKLabelNode labelNodeWithFontNamed:@"PressStart2P"];
@@ -190,7 +210,7 @@ static NSString *textureNameForState[2][2] = {
     });
     
     [self updateSubviews];
-    [self updateAnimation];
+    [self updateAnimation];    
 }
 
 - (void)resumeGame
@@ -251,6 +271,25 @@ static NSString *textureNameForState[2][2] = {
             break;
     }
     return state == 0 ? SPRITES_ANIM_8BITS_LV1_NORMAL : SPRITES_ANIM_8BITS_LV1_HIGHLIGHT;
+}
+
+- (void)handleCameraButtonPressed:(id)sender
+{
+    [self.delegate gameSceneDidCameraButton:self];
+}
+
+- (void)handleFlipButtonPressed:(id)sender
+{
+    self.vision.cameraDevice = ({
+        PBJCameraDevice currentDevice = self.vision.cameraDevice;
+        PBJCameraDevice newDevice;
+        if (currentDevice == PBJCameraDeviceFront) {
+            newDevice = PBJCameraDeviceBack;
+        } else {
+            newDevice = PBJCameraDeviceFront;
+        }
+        newDevice;
+    });
 }
 
 - (void)handleFeedButtonPressed:(id)sender
