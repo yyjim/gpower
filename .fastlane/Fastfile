@@ -58,6 +58,13 @@ end
 before_all do
   ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   cocoapods
+  sigh(
+      adhoc: true,
+      force: true,
+  )
+  # use the UDID of the newly created provisioning profile
+  ENV["PROFILE_UDID"] = Actions.lane_context[Actions::SharedValues::SIGH_UDID]
+  puts ENV["PROFILE_UDID"]
 end
 
 lane :adhoc do

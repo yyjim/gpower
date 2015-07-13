@@ -673,7 +673,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8b01b93d-9754-4b72-ba34-c864f72e8e18";
+				PROVISIONING_PROFILE = "$(PROFILE_UDID)";
 			};
 			name = AdHoc;
 		};
