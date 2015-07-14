@@ -1,5 +1,5 @@
 PODS:
-  - CBToolkit/Core (0.2.25):
+  - CBToolkit/Core (0.2.29):
     - Reachability
     - UIDevice-Hardware@cb (~> 0.1.0)
   - PBJVision (0.4.2)
@@ -26,7 +26,7 @@ CHECKOUT OPTIONS:
     :git: git@github.com:SocialObjects-Software/SOMotionDetector.git
 
 SPEC CHECKSUMS:
-  CBToolkit: cb30620dfd5c89dde8e5bb520abef3cf5170a310
+  CBToolkit: 1b06739076fbbb858fddd6de1f7b5365eb80d185
   PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SOMotionDetector: 9e7975e25ccdaa3f108db510153f92ef433767da
